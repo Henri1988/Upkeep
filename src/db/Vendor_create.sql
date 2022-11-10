@@ -13,7 +13,7 @@ CREATE TABLE vendor (
     email varchar(255)  NULL,
     vendor_type varchar(255)  NULL,
     description varchar(500)  NULL,
-    rate decimal(4,4)  NULL,
+    rate decimal(12,2)  NULL,
     CONSTRAINT vendor_pk PRIMARY KEY (id)
 );
 
