@@ -3,9 +3,8 @@ package com.example.myApp.vendor;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
-
 public interface VendorMapper {
-
+    @Mapping(target = "id", ignore = true)
     Vendor vendorDtoToVendor(VendorDto vendorDto);
 
     VendorDto vendorToVendorDto(Vendor vendor);

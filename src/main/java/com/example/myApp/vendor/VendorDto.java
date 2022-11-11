@@ -1,6 +1,6 @@
 package com.example.myApp.vendor;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,27 +10,30 @@ import java.math.BigDecimal;
 /**
  * A DTO for the {@link Vendor} entity
  */
-@Data
-public class VendorDto implements Serializable {
 
-    private final Integer id;
+@Getter
+@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class VendorDto {
+    private Integer id;
     @Size(max = 100)
     @NotNull
-    private final String companyName;
+    private String companyName;
     @Size(max = 255)
-    private final String address;
+    private  String address;
     @Size(max = 255)
-    private final String phone;
+    private String phone;
     @Size(max = 255)
-    private final String website;
+    private String website;
     @Size(max = 100)
-    private final String name;
+    private String name;
     @Size(max = 255)
-    private final String email;
+    private String email;
     @Size(max = 255)
-    private final String vendorType;
+    private String vendorType;
     @Size(max = 500)
-    private final String description;
-
-    private final BigDecimal rate;
+    private String description;
+    private BigDecimal rate;
 }
