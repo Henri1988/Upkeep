@@ -30,5 +30,10 @@ public class VendorService {
         Vendor vendor =vendorRepository.findByCompanyName(name);
         return vendorMapper.vendorToVendorDto(vendor);
     }
+
+    public List<VendorDto> findAllVendors() {
+        List<Vendor>vendors=vendorRepository.findAll();
+        return vendorMapper.toDtos(vendors);
+    }
 }
 
