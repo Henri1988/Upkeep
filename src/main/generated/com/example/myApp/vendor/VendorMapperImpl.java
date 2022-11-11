@@ -1,11 +1,13 @@
 package com.example.myApp.vendor;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-11T16:59:21+0200",
+    date = "2022-11-11T19:52:21+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
@@ -52,6 +54,20 @@ public class VendorMapperImpl implements VendorMapper {
         vendorDto.setRate( vendor.getRate() );
 
         return vendorDto;
+    }
+
+    @Override
+    public List<VendorDto> toDtos(List<Vendor> vendor) {
+        if ( vendor == null ) {
+            return null;
+        }
+
+        List<VendorDto> list = new ArrayList<VendorDto>( vendor.size() );
+        for ( Vendor vendor1 : vendor ) {
+            list.add( vendorToVendorDto( vendor1 ) );
+        }
+
+        return list;
     }
 
     @Override
