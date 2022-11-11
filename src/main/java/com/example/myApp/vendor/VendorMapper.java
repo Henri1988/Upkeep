@@ -14,5 +14,5 @@ public interface VendorMapper {
     List<VendorDto> toDtos(List<Vendor> vendor);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Vendor updateVendorFromVendorDto(VendorDto vendorDto, @MappingTarget Vendor vendor);
+    Vendor updateEntity(VendorDto vendorDto, @MappingTarget Vendor vendor);
 }
