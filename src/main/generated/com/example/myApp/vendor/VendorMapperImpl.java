@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-12T00:50:10+0200",
+    date = "2022-11-12T17:37:47+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
 public class VendorMapperImpl implements VendorMapper {
 
     @Override
-    public Vendor vendorDtoToVendor(VendorDto vendorDto) {
+    public Vendor toEntity(VendorDto vendorDto) {
         if ( vendorDto == null ) {
             return null;
         }
@@ -35,7 +35,7 @@ public class VendorMapperImpl implements VendorMapper {
     }
 
     @Override
-    public VendorDto vendorToVendorDto(Vendor vendor) {
+    public VendorDto toDto(Vendor vendor) {
         if ( vendor == null ) {
             return null;
         }
@@ -64,21 +64,18 @@ public class VendorMapperImpl implements VendorMapper {
 
         List<VendorDto> list = new ArrayList<VendorDto>( vendor.size() );
         for ( Vendor vendor1 : vendor ) {
-            list.add( vendorToVendorDto( vendor1 ) );
+            list.add( toDto( vendor1 ) );
         }
 
         return list;
     }
 
     @Override
-    public Vendor updateEntity(VendorDto vendorDto, Vendor vendor) {
+    public void updateEntity(VendorDto vendorDto, Vendor vendor) {
         if ( vendorDto == null ) {
-            return null;
+            return;
         }
 
-        if ( vendorDto.getId() != null ) {
-            vendor.setId( vendorDto.getId() );
-        }
         if ( vendorDto.getCompanyName() != null ) {
             vendor.setCompanyName( vendorDto.getCompanyName() );
         }
@@ -106,7 +103,5 @@ public class VendorMapperImpl implements VendorMapper {
         if ( vendorDto.getRate() != null ) {
             vendor.setRate( vendorDto.getRate() );
         }
-
-        return vendor;
     }
 }

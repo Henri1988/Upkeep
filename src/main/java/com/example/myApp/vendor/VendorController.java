@@ -32,11 +32,15 @@ public class VendorController {
     public List<VendorDto> findAllVendors(){
         return vendorService.findAllVendors();
     }
-
     @PutMapping("/vendor/update")
     @Operation(summary = "Updates a vendor")
-    public VendorDto updateVendorById(@RequestBody VendorDto vendorDto, @RequestParam Integer vendorId){
-        return vendorService.updateVendor(vendorDto, vendorId);
+    public void updateVendorById(@RequestBody VendorDto vendorDto, @RequestParam Integer vendorId){
+        vendorService.updateVendor(vendorDto, vendorId);
+    }
+    @DeleteMapping("/vendor/delete")
+    @Operation(summary = "Deletes vendor by id")
+    public void deleteVendorById(Integer id){
+        vendorService.deleteVendorById(id);
     }
 
 }

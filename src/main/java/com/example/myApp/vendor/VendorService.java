@@ -17,19 +17,19 @@ public class VendorService {
 
 
     public VendorDto createVendor(VendorDto vendorDto) {
-        Vendor vendor =vendorMapper.vendorDtoToVendor(vendorDto);
+        Vendor vendor =vendorMapper.toEntity(vendorDto);
         vendorRepository.save(vendor);
-        return vendorMapper.vendorToVendorDto(vendor);
+        return vendorMapper.toDto(vendor);
     }
 
     public VendorDto findVendorById(Integer id) {
         Optional<Vendor> vendor =vendorRepository.findVendorById(id);
-        return vendorMapper.vendorToVendorDto(vendor.get());
+        return vendorMapper.toDto(vendor.get());
     }
 
     public VendorDto findVendorByName(String name) {
         Vendor vendor =vendorRepository.findByCompanyName(name);
-        return vendorMapper.vendorToVendorDto(vendor);
+        return vendorMapper.toDto(vendor);
     }
 
     public List<VendorDto> findAllVendors() {
@@ -37,10 +37,15 @@ public class VendorService {
         return vendorMapper.toDtos(vendors);
     }
 
-    public VendorDto updateVendor(VendorDto vendorDto, Integer vendorId) {
+    public void updateVendor(VendorDto vendorDto, Integer vendorId) {
         Vendor vendor = vendorRepository.getById(vendorId);
-        Vendor updatedVendor = vendorMapper.updateEntity(vendorDto,vendor);
-        return vendorMapper.vendorToVendorDto(updatedVendor);
+        vendorMapper.updateEntity(vendorDto,vendor);
+        vendorRepository.save(vendor);
+    }
+
+    public void deleteVendorById(Integer id) {
+        Vendor vendor =vendorRepository.getById(id);
+        vendorRepository.delete(vendor);
     }
 }
 
