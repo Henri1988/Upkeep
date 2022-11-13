@@ -1,8 +1,6 @@
 package com.example.myApp.vendor;
-
-
+import com.example.myApp.exception.NotFoundException;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +22,10 @@ public class VendorService {
 
     public VendorDto findVendorById(Integer id) {
         Optional<Vendor> vendor =vendorRepository.findVendorById(id);
+
+        if (vendor.isEmpty()){
+            throw new NotFoundException("Invalid vendor","Vendor does not exist.");
+        }
         return vendorMapper.toDto(vendor.get());
     }
 
