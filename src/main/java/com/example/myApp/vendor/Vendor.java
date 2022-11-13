@@ -11,6 +11,8 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@ToString
+@Builder
 @Entity
 @Data
 @Table(name = "vendor", schema = "upkeep")

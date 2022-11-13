@@ -1,5 +1,6 @@
 package com.example.myApp.vendor;
 
+import jdk.jshell.Snippet;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,8 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Builder
 public class VendorDto {
     private Integer id;
     @Size(max = 100)
@@ -36,4 +39,5 @@ public class VendorDto {
     @Size(max = 500)
     private String description;
     private BigDecimal rate;
+
 }

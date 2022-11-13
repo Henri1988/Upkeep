@@ -1,5 +1,7 @@
 package com.example.myApp.vendor;
 
+import com.example.myApp.vendor.Vendor.VendorBuilder;
+import com.example.myApp.vendor.VendorDto.VendorDtoBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-13T15:52:32+0200",
+    date = "2022-11-14T00:16:14+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
@@ -19,19 +21,19 @@ public class VendorMapperImpl implements VendorMapper {
             return null;
         }
 
-        Vendor vendor = new Vendor();
+        VendorBuilder vendor = Vendor.builder();
 
-        vendor.setCompanyName( vendorDto.getCompanyName() );
-        vendor.setAddress( vendorDto.getAddress() );
-        vendor.setPhone( vendorDto.getPhone() );
-        vendor.setWebsite( vendorDto.getWebsite() );
-        vendor.setName( vendorDto.getName() );
-        vendor.setEmail( vendorDto.getEmail() );
-        vendor.setVendorType( vendorDto.getVendorType() );
-        vendor.setDescription( vendorDto.getDescription() );
-        vendor.setRate( vendorDto.getRate() );
+        vendor.companyName( vendorDto.getCompanyName() );
+        vendor.address( vendorDto.getAddress() );
+        vendor.phone( vendorDto.getPhone() );
+        vendor.website( vendorDto.getWebsite() );
+        vendor.name( vendorDto.getName() );
+        vendor.email( vendorDto.getEmail() );
+        vendor.vendorType( vendorDto.getVendorType() );
+        vendor.description( vendorDto.getDescription() );
+        vendor.rate( vendorDto.getRate() );
 
-        return vendor;
+        return vendor.build();
     }
 
     @Override
@@ -40,20 +42,20 @@ public class VendorMapperImpl implements VendorMapper {
             return null;
         }
 
-        VendorDto vendorDto = new VendorDto();
+        VendorDtoBuilder vendorDto = VendorDto.builder();
 
-        vendorDto.setId( vendor.getId() );
-        vendorDto.setCompanyName( vendor.getCompanyName() );
-        vendorDto.setAddress( vendor.getAddress() );
-        vendorDto.setPhone( vendor.getPhone() );
-        vendorDto.setWebsite( vendor.getWebsite() );
-        vendorDto.setName( vendor.getName() );
-        vendorDto.setEmail( vendor.getEmail() );
-        vendorDto.setVendorType( vendor.getVendorType() );
-        vendorDto.setDescription( vendor.getDescription() );
-        vendorDto.setRate( vendor.getRate() );
+        vendorDto.id( vendor.getId() );
+        vendorDto.companyName( vendor.getCompanyName() );
+        vendorDto.address( vendor.getAddress() );
+        vendorDto.phone( vendor.getPhone() );
+        vendorDto.website( vendor.getWebsite() );
+        vendorDto.name( vendor.getName() );
+        vendorDto.email( vendor.getEmail() );
+        vendorDto.vendorType( vendor.getVendorType() );
+        vendorDto.description( vendor.getDescription() );
+        vendorDto.rate( vendor.getRate() );
 
-        return vendorDto;
+        return vendorDto.build();
     }
 
     @Override
