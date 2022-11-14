@@ -28,7 +28,7 @@ public class VendorMock {
     public static List<Vendor> shallowListOfVendors(int howMany){
         List<Vendor> mockVendors = new ArrayList<>();
         for (int i=0;i<howMany; i++){
-            mockVendors.add(shallowVendor((long) i));
+            mockVendors.add(shallowVendor((int) i));
         }
         return mockVendors;
     }
