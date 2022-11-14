@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -56,6 +57,10 @@ public class VendorServiceTest {
         Vendor resultSet = VendorMock.shallowVendor(entityIdToFind);
         when(vendorRepository.findVendorById(entityIdToFind)).thenReturn(Optional.of (resultSet));
         var result = vendorService.findVendorById(entityIdToFind);
+        assertAll(
+                () -> assertNotNull(result),
+                () -> assertEquals(resultSet.getId(), result.getId())
+        );
     }
 
     @Test
