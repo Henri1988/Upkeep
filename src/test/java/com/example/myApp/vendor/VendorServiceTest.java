@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 
@@ -82,4 +83,19 @@ public class VendorServiceTest {
         vendorService.deleteVendorById(entityIdToDelete);
     }
 
+
+    @Test
+    @DisplayName("When given id should update vendor")
+    void updateVendor() {
+        VendorDto vendorDto =new VendorDto();
+        vendorDto.setId(89);
+        vendorDto.setCompanyName("Test name");
+
+        Vendor newVendor = new Vendor();
+        vendorDto.setCompanyName("New test name");
+
+        given(vendorRepository.findVendorById(vendorDto.getId())).willReturn(Optional.of(vendor));
+        vendorService.updateVendor(newVendor,vendorDto.getId());
+
+    }
 }
