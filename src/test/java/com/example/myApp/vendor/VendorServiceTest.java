@@ -84,18 +84,18 @@ public class VendorServiceTest {
     }
 
 
-    @Test
-    @DisplayName("When given id should update vendor")
-    void updateVendor() {
-        VendorDto vendorDto =new VendorDto();
-        vendorDto.setId(89);
-        vendorDto.setCompanyName("Test name");
-
-        Vendor newVendor = new Vendor();
-        vendorDto.setCompanyName("New test name");
-
-        given(vendorRepository.findVendorById(vendorDto.getId())).willReturn(Optional.of(vendor));
-        vendorService.updateVendor(newVendor,vendorDto.getId());
-
-    }
+//    @Test
+//    @DisplayName("When given id should update vendor")
+//    void updateVendor() {
+//        VendorDto vendorDto =new VendorDto();
+//        vendorDto.setId(89);
+//        vendorDto.setCompanyName("Test name");
+//
+//        Vendor newVendor = new Vendor();
+//        vendorDto.setCompanyName("New test name");
+//
+//        given(vendorRepository.findVendorById(vendorDto.getId())).willReturn(Optional.of(vendor));
+//        vendorService.updateVendor(newVendor,vendorDto.getId());
+//
+//    }
 }
