@@ -37,4 +37,18 @@ public class Vendor {
     public Vendor() {
 
     }
+
+    public Vendor(Integer id, String companyName, String address, String phone, String website, String name,
+                  String email, String vendorType, String description, BigDecimal rate) {
+        this.id = id;
+        this.companyName = companyName;
+        this.address = address;
+        this.phone = phone;
+        this.website = website;
+        this.name = name;
+        this.email = email;
+        this.vendorType = vendorType;
+        this.description = description;
+        this.rate = rate;
+    }
 }
