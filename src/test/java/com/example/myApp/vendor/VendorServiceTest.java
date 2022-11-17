@@ -2,7 +2,7 @@ package com.example.myApp.vendor;
 import com.example.myApp.domain.vendor.*;
 import com.example.myApp.mock.VendorDtoMock;
 import com.example.myApp.mock.VendorMock;
-import com.example.myApp.service.vendorservice.VendorService;
+import com.example.myApp.service.vendor.VendorService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

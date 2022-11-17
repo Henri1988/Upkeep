@@ -1,4 +1,4 @@
-package com.example.myApp.service.vendorservice;
+package com.example.myApp.service.vendor;
 import com.example.myApp.domain.vendor.Vendor;
 import com.example.myApp.domain.vendor.VendorDto;
 import com.example.myApp.domain.vendor.VendorMapper;
