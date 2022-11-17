@@ -1,4 +1,8 @@
-package com.example.myApp.vendor;
+package com.example.myApp.service.vendorservice;
+import com.example.myApp.domain.vendor.Vendor;
+import com.example.myApp.domain.vendor.VendorDto;
+import com.example.myApp.domain.vendor.VendorMapper;
+import com.example.myApp.domain.vendor.VendorRepository;
 import com.example.myApp.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -11,7 +15,7 @@ public class VendorService {
     @Resource
     private VendorRepository vendorRepository;
     @Resource
-    private VendorMapper  vendorMapper;
+    private VendorMapper vendorMapper;
 
 
     public VendorDto createVendor(VendorDto vendorDto) {

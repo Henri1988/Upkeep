@@ -1,4 +1,4 @@
-package com.example.myApp.vendor;
+package com.example.myApp.domain.vendor;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;

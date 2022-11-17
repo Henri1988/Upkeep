@@ -1,7 +1,7 @@
-package com.example.myApp.vendor;
+package com.example.myApp.domain.vendor;
 
-import com.example.myApp.vendor.Vendor.VendorBuilder;
-import com.example.myApp.vendor.VendorDto.VendorDtoBuilder;
+import com.example.myApp.domain.vendor.Vendor.VendorBuilder;
+import com.example.myApp.domain.vendor.VendorDto.VendorDtoBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-17T21:00:59+0200",
+    date = "2022-11-17T21:11:58+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component

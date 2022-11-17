@@ -1,4 +1,4 @@
-package com.example.myApp.vendor;
+package com.example.myApp.domain.vendor;
 
 import org.mapstruct.*;
 

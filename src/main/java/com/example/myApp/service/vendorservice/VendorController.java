@@ -1,4 +1,5 @@
-package com.example.myApp.vendor;
+package com.example.myApp.service.vendorservice;
+import com.example.myApp.domain.vendor.VendorDto;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
