@@ -5,19 +5,21 @@ import com.example.myApp.domain.partsandinventory.parts.Part;
 import com.example.myApp.domain.vendor.Vendor;
 import com.example.myApp.domain.vendor.Vendor.VendorBuilder;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-18T00:15:16+0200",
+    date = "2022-11-18T01:13:07+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
 public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
 
     @Override
-    public PurchaseOrder purchaseOrderDtoToPurchaseOrder(PurchaseOrderDto purchaseOrderDto) {
+    public PurchaseOrder toEntity(PurchaseOrderDto purchaseOrderDto) {
         if ( purchaseOrderDto == null ) {
             return null;
         }
@@ -48,7 +50,7 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
     }
 
     @Override
-    public PurchaseOrderDto purchaseOrderToPurchaseOrderDto(PurchaseOrder purchaseOrder) {
+    public PurchaseOrderDto toDto(PurchaseOrder purchaseOrder) {
         if ( purchaseOrder == null ) {
             return null;
         }
@@ -96,6 +98,20 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         PurchaseOrderDto purchaseOrderDto = new PurchaseOrderDto( id, title, dueDate, additionalDetails, vendorId, categoryId, partId, requesterCompanyName, requesterAddress, requesterPhoneNumber, shipToName, shippingAddress, shipToCompanyName, shipToPhoneNumber, purchaseOrderDate, shippingMethod, requisitioner, terms, notes );
 
         return purchaseOrderDto;
+    }
+
+    @Override
+    public List<PurchaseOrderDto> toDtos(List<PurchaseOrder> order) {
+        if ( order == null ) {
+            return null;
+        }
+
+        List<PurchaseOrderDto> list = new ArrayList<PurchaseOrderDto>( order.size() );
+        for ( PurchaseOrder purchaseOrder : order ) {
+            list.add( toDto( purchaseOrder ) );
+        }
+
+        return list;
     }
 
     @Override

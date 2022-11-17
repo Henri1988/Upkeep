@@ -14,6 +14,7 @@ import com.example.myApp.domain.vendor.VendorRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -33,7 +34,7 @@ public class PurchaseOrderService {
 
     public PurchaseOrderDto createPurchaseOrder(PurchaseOrderDto purchaseOrderDto) {
 
-        PurchaseOrder purchaseOrder = purchaseOrderMapper.purchaseOrderDtoToPurchaseOrder(purchaseOrderDto);
+        PurchaseOrder purchaseOrder = purchaseOrderMapper.toEntity(purchaseOrderDto);
 
         Optional<Category> category = categoryRepository.findByCategoryId(purchaseOrderDto.getCategoryId());
         Optional<Vendor> vendor =vendorRepository.findVendorById(purchaseOrderDto.getVendorId());
@@ -43,12 +44,28 @@ public class PurchaseOrderService {
         purchaseOrder.setPart(part.get());
 
         purchaseOrderRepository.save(purchaseOrder);
-        return purchaseOrderMapper.purchaseOrderToPurchaseOrderDto(purchaseOrder);
+        return purchaseOrderMapper.toDto(purchaseOrder);
     }
 
 
     public PurchaseOrderDto findPurchaseById(Integer id) {
         Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
-        return purchaseOrderMapper.purchaseOrderToPurchaseOrderDto(purchaseOrder.get());
+        return purchaseOrderMapper.toDto(purchaseOrder.get());
+    }
+
+    public List<PurchaseOrderDto> findAllPurchases() {
+        List<PurchaseOrder> orders =purchaseOrderRepository.findAllPurchases();
+        return purchaseOrderMapper.toDtos(orders);
+    }
+
+    public void updatePurchaseOrderById(PurchaseOrderDto purchaseOrderDto, Integer id) {
+        Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
+        purchaseOrderMapper.updatePurchaseOrderFromPurchaseOrderDto(purchaseOrderDto, purchaseOrder.get());
+        purchaseOrderRepository.save(purchaseOrder.get());
+    }
+
+    public void deletePurchaseOrderById(Integer id) {
+        Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
+        purchaseOrderRepository.delete(purchaseOrder.get());
     }
 }
