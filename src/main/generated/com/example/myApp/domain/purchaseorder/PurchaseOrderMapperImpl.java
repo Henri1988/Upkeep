@@ -4,23 +4,20 @@ import com.example.myApp.domain.category.Category;
 import com.example.myApp.domain.partsandinventory.parts.Part;
 import com.example.myApp.domain.vendor.Vendor;
 import com.example.myApp.domain.vendor.Vendor.VendorBuilder;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-17T22:37:19+0200",
+    date = "2022-11-18T00:15:16+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
 public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
 
     @Override
-    public PurchaseOrder toEntity(PurchaseOrderDto purchaseOrderDto) {
+    public PurchaseOrder purchaseOrderDtoToPurchaseOrder(PurchaseOrderDto purchaseOrderDto) {
         if ( purchaseOrderDto == null ) {
             return null;
         }
@@ -30,6 +27,7 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         purchaseOrder.setVendor( purchaseOrderDtoToVendor( purchaseOrderDto ) );
         purchaseOrder.setCategory( purchaseOrderDtoToCategory( purchaseOrderDto ) );
         purchaseOrder.setPart( purchaseOrderDtoToPart( purchaseOrderDto ) );
+        purchaseOrder.setId( purchaseOrderDto.getId() );
         purchaseOrder.setTitle( purchaseOrderDto.getTitle() );
         purchaseOrder.setDueDate( purchaseOrderDto.getDueDate() );
         purchaseOrder.setAdditionalDetails( purchaseOrderDto.getAdditionalDetails() );
@@ -50,11 +48,14 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
     }
 
     @Override
-    public PurchaseOrderDto toDto(PurchaseOrder purchaseOrder) {
+    public PurchaseOrderDto purchaseOrderToPurchaseOrderDto(PurchaseOrder purchaseOrder) {
         if ( purchaseOrder == null ) {
             return null;
         }
 
+        Integer vendorId = null;
+        Integer categoryId = null;
+        Integer partId = null;
         Integer id = null;
         String title = null;
         LocalDate dueDate = null;
@@ -72,6 +73,9 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         String terms = null;
         String notes = null;
 
+        vendorId = purchaseOrderVendorId( purchaseOrder );
+        categoryId = purchaseOrderCategoryId( purchaseOrder );
+        partId = purchaseOrderPartId( purchaseOrder );
         id = purchaseOrder.getId();
         title = purchaseOrder.getTitle();
         dueDate = purchaseOrder.getDueDate();
@@ -89,55 +93,29 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         terms = purchaseOrder.getTerms();
         notes = purchaseOrder.getNotes();
 
-        Integer vendorId = null;
-        String vendorCompanyName = null;
-        String vendorAddress = null;
-        String vendorPhone = null;
-        String vendorWebsite = null;
-        String vendorName = null;
-        String vendorEmail = null;
-        String vendorVendorType = null;
-        String vendorDescription = null;
-        BigDecimal vendorRate = null;
-        Integer categoryId = null;
-        String categoryName = null;
-        Integer partId = null;
-        String partTitle = null;
-        String partDescription = null;
-        String partCategory = null;
-        BigDecimal partCost = null;
-        Integer partQuantity = null;
-        Integer partMinimumQuantity = null;
-        String partBarcode = null;
-        BigDecimal partArea = null;
-        String partAdditionalDetails = null;
-        String partImage = null;
-
-        PurchaseOrderDto purchaseOrderDto = new PurchaseOrderDto( id, title, dueDate, additionalDetails, vendorId, vendorCompanyName, vendorAddress, vendorPhone, vendorWebsite, vendorName, vendorEmail, vendorVendorType, vendorDescription, vendorRate, categoryId, categoryName, partId, partTitle, partDescription, partCategory, partCost, partQuantity, partMinimumQuantity, partBarcode, partArea, partAdditionalDetails, partImage, requesterCompanyName, requesterAddress, requesterPhoneNumber, shipToName, shippingAddress, shipToCompanyName, shipToPhoneNumber, purchaseOrderDate, shippingMethod, requisitioner, terms, notes );
+        PurchaseOrderDto purchaseOrderDto = new PurchaseOrderDto( id, title, dueDate, additionalDetails, vendorId, categoryId, partId, requesterCompanyName, requesterAddress, requesterPhoneNumber, shipToName, shippingAddress, shipToCompanyName, shipToPhoneNumber, purchaseOrderDate, shippingMethod, requisitioner, terms, notes );
 
         return purchaseOrderDto;
     }
 
     @Override
-    public List<PurchaseOrderDto> toDtos(List<PurchaseOrder> order) {
-        if ( order == null ) {
-            return null;
-        }
-
-        List<PurchaseOrderDto> list = new ArrayList<PurchaseOrderDto>( order.size() );
-        for ( PurchaseOrder purchaseOrder : order ) {
-            list.add( toDto( purchaseOrder ) );
-        }
-
-        return list;
-    }
-
-    @Override
-    public PurchaseOrder updateEntity(PurchaseOrderDto purchaseOrderDto, PurchaseOrder purchaseOrder) {
+    public PurchaseOrder updatePurchaseOrderFromPurchaseOrderDto(PurchaseOrderDto purchaseOrderDto, PurchaseOrder purchaseOrder) {
         if ( purchaseOrderDto == null ) {
             return null;
         }
 
+        if ( purchaseOrder.getVendor() == null ) {
+            purchaseOrder.setVendor( new Vendor() );
+        }
+        purchaseOrderDtoToVendor1( purchaseOrderDto, purchaseOrder.getVendor() );
+        if ( purchaseOrder.getCategory() == null ) {
+            purchaseOrder.setCategory( new Category() );
+        }
+        purchaseOrderDtoToCategory1( purchaseOrderDto, purchaseOrder.getCategory() );
+        if ( purchaseOrder.getPart() == null ) {
+            purchaseOrder.setPart( new Part() );
+        }
+        purchaseOrderDtoToPart1( purchaseOrderDto, purchaseOrder.getPart() );
         if ( purchaseOrderDto.getId() != null ) {
             purchaseOrder.setId( purchaseOrderDto.getId() );
         }
@@ -198,15 +176,6 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         VendorBuilder vendor = Vendor.builder();
 
         vendor.id( purchaseOrderDto.getVendorId() );
-        vendor.companyName( purchaseOrderDto.getVendorCompanyName() );
-        vendor.address( purchaseOrderDto.getVendorAddress() );
-        vendor.phone( purchaseOrderDto.getVendorPhone() );
-        vendor.website( purchaseOrderDto.getVendorWebsite() );
-        vendor.name( purchaseOrderDto.getVendorName() );
-        vendor.email( purchaseOrderDto.getVendorEmail() );
-        vendor.vendorType( purchaseOrderDto.getVendorVendorType() );
-        vendor.description( purchaseOrderDto.getVendorDescription() );
-        vendor.rate( purchaseOrderDto.getVendorRate() );
 
         return vendor.build();
     }
@@ -219,7 +188,6 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         Category category = new Category();
 
         category.setId( purchaseOrderDto.getCategoryId() );
-        category.setName( purchaseOrderDto.getCategoryName() );
 
         return category;
     }
@@ -232,17 +200,82 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         Part part = new Part();
 
         part.setId( purchaseOrderDto.getPartId() );
-        part.setTitle( purchaseOrderDto.getPartTitle() );
-        part.setDescription( purchaseOrderDto.getPartDescription() );
-        part.setCategory( purchaseOrderDto.getPartCategory() );
-        part.setCost( purchaseOrderDto.getPartCost() );
-        part.setQuantity( purchaseOrderDto.getPartQuantity() );
-        part.setMinimumQuantity( purchaseOrderDto.getPartMinimumQuantity() );
-        part.setBarcode( purchaseOrderDto.getPartBarcode() );
-        part.setArea( purchaseOrderDto.getPartArea() );
-        part.setAdditionalDetails( purchaseOrderDto.getPartAdditionalDetails() );
-        part.setImage( purchaseOrderDto.getPartImage() );
 
         return part;
+    }
+
+    private Integer purchaseOrderVendorId(PurchaseOrder purchaseOrder) {
+        if ( purchaseOrder == null ) {
+            return null;
+        }
+        Vendor vendor = purchaseOrder.getVendor();
+        if ( vendor == null ) {
+            return null;
+        }
+        Integer id = vendor.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
+    private Integer purchaseOrderCategoryId(PurchaseOrder purchaseOrder) {
+        if ( purchaseOrder == null ) {
+            return null;
+        }
+        Category category = purchaseOrder.getCategory();
+        if ( category == null ) {
+            return null;
+        }
+        Integer id = category.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
+    private Integer purchaseOrderPartId(PurchaseOrder purchaseOrder) {
+        if ( purchaseOrder == null ) {
+            return null;
+        }
+        Part part = purchaseOrder.getPart();
+        if ( part == null ) {
+            return null;
+        }
+        Integer id = part.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
+    protected void purchaseOrderDtoToVendor1(PurchaseOrderDto purchaseOrderDto, Vendor mappingTarget) {
+        if ( purchaseOrderDto == null ) {
+            return;
+        }
+
+        if ( purchaseOrderDto.getVendorId() != null ) {
+            mappingTarget.setId( purchaseOrderDto.getVendorId() );
+        }
+    }
+
+    protected void purchaseOrderDtoToCategory1(PurchaseOrderDto purchaseOrderDto, Category mappingTarget) {
+        if ( purchaseOrderDto == null ) {
+            return;
+        }
+
+        if ( purchaseOrderDto.getCategoryId() != null ) {
+            mappingTarget.setId( purchaseOrderDto.getCategoryId() );
+        }
+    }
+
+    protected void purchaseOrderDtoToPart1(PurchaseOrderDto purchaseOrderDto, Part mappingTarget) {
+        if ( purchaseOrderDto == null ) {
+            return;
+        }
+
+        if ( purchaseOrderDto.getPartId() != null ) {
+            mappingTarget.setId( purchaseOrderDto.getPartId() );
+        }
     }
 }
