@@ -42,6 +42,7 @@ public class VendorController {
     @DeleteMapping("/vendor/delete")
     @Operation(summary = "Deletes vendor by id")
     public void deleteVendorById(Integer id){
+
         vendorService.deleteVendorById(id);
     }
 

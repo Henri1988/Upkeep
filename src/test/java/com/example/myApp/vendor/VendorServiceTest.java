@@ -1,4 +1,5 @@
 package com.example.myApp.vendor;
+import com.example.myApp.domain.vendor.*;
 import com.example.myApp.mock.VendorDtoMock;
 import com.example.myApp.mock.VendorMock;
 import org.junit.jupiter.api.DisplayName;

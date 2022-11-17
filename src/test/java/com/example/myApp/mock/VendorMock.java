@@ -1,7 +1,7 @@
 package com.example.myApp.mock;
 
 
-import com.example.myApp.vendor.Vendor;
+import com.example.myApp.domain.vendor.Vendor;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
