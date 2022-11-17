@@ -1,4 +1,4 @@
-package com.example.myApp.domain.partsandinventory;
+package com.example.myApp.domain.partsandinventory.parts;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

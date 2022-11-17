@@ -4,6 +4,8 @@
     <option name="entityNameTemplate" />
     <option name="generateJpaOnGetter" value="true" />
     <option name="isLombokGetterAndSetter" value="true" />
+    <option name="isLombokAllArgsConstructor" value="true" />
+    <option name="isLombokNoArgsConstructor" value="true" />
     <option name="scaffoldingLanguage" />
   </component>
 </project>
