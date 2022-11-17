@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-17 17:17:51.16
+-- Last modification date: 2022-11-17 18:41:53.406
 
 -- tables
 -- Table: category
@@ -85,14 +85,18 @@ CREATE TABLE worker (
 
 -- Table: worker_part
 CREATE TABLE worker_part (
+    id serial  NOT NULL,
     part_id int  NOT NULL,
-    worker_id int  NOT NULL
+    worker_id int  NOT NULL,
+    CONSTRAINT worker_part_pk PRIMARY KEY (id)
 );
 
 -- Table: worker_role
 CREATE TABLE worker_role (
+    id serial  NOT NULL,
     role_id int  NOT NULL,
-    worker_id int  NOT NULL
+    worker_id int  NOT NULL,
+    CONSTRAINT worker_role_pk PRIMARY KEY (id)
 );
 
 -- foreign keys

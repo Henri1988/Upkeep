@@ -1,5 +1,4 @@
 package com.example.myApp.vendor;
-import com.example.myApp.domain.vendor.*;
 import com.example.myApp.mock.VendorDtoMock;
 import com.example.myApp.mock.VendorMock;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 

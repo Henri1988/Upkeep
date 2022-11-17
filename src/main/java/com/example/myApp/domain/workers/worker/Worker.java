@@ -1,4 +1,4 @@
-package com.example.myApp.domain;
+package com.example.myApp.domain.workers.worker;
 
 import lombok.*;
 
@@ -19,24 +19,18 @@ public class Worker {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 100)
-    @NotNull
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @Size(max = 200)
     @Column(name = "email", length = 200)
     private String email;
 
-    @Size(max = 255)
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Size(max = 100)
     @Column(name = "job_title", length = 100)
     private String jobTitle;
 
-    @Size(max = 255)
     @Column(name = "company_name")
     private String companyName;
 

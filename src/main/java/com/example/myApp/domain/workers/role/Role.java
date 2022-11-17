@@ -1,4 +1,4 @@
-package com.example.myApp.domain;
+package com.example.myApp.domain.workers.role;
 
 import lombok.*;
 
@@ -18,8 +18,6 @@ public class Role {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 100)
-    @NotNull
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 

@@ -1,12 +1,10 @@
 package com.example.myApp.vendor;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jdk.jshell.Snippet;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
