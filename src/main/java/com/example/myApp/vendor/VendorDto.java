@@ -1,5 +1,6 @@
 package com.example.myApp.vendor;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jdk.jshell.Snippet;
 import lombok.*;
 
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @ToString
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class VendorDto {
     private Integer id;
     @Size(max = 100)
