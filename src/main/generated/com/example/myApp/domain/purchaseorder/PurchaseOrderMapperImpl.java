@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-18T02:15:57+0200",
+    date = "2022-11-18T02:25:27+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
@@ -29,7 +29,6 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
         purchaseOrder.setVendor( purchaseOrderDtoToVendor( purchaseOrderDto ) );
         purchaseOrder.setCategory( purchaseOrderDtoToCategory( purchaseOrderDto ) );
         purchaseOrder.setPart( purchaseOrderDtoToPart( purchaseOrderDto ) );
-        purchaseOrder.setId( purchaseOrderDto.getId() );
         purchaseOrder.setTitle( purchaseOrderDto.getTitle() );
         purchaseOrder.setDueDate( purchaseOrderDto.getDueDate() );
         purchaseOrder.setAdditionalDetails( purchaseOrderDto.getAdditionalDetails() );
@@ -112,9 +111,6 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
             purchaseOrder.setPart( new Part() );
         }
         purchaseOrderDtoToPart1( purchaseOrderDto, purchaseOrder.getPart() );
-        if ( purchaseOrderDto.getId() != null ) {
-            purchaseOrder.setId( purchaseOrderDto.getId() );
-        }
         if ( purchaseOrderDto.getTitle() != null ) {
             purchaseOrder.setTitle( purchaseOrderDto.getTitle() );
         }

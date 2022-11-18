@@ -1,6 +1,4 @@
 package com.example.myApp.service.purchaseorder;
-
-
 import com.example.myApp.domain.category.Category;
 import com.example.myApp.domain.category.CategoryRepository;
 import com.example.myApp.domain.partsandinventory.parts.Part;
@@ -12,10 +10,8 @@ import com.example.myApp.domain.purchaseorder.PurchaseOrderRepository;
 import com.example.myApp.domain.vendor.Vendor;
 import com.example.myApp.domain.vendor.VendorRepository;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
