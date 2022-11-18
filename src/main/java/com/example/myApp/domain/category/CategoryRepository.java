@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
     @Query("select c from Category c where c.id = ?1")
-    Optional<Category> findByCategoryId(Integer id);
+    Category findByCategoryId(Integer id);
 
 }

@@ -25,12 +25,9 @@ public class VendorService {
     }
 
     public VendorDto findVendorById(Integer id) {
-        Optional<Vendor> vendor =vendorRepository.findVendorById(id);
+        Vendor vendor =vendorRepository.findVendorById(id);
 
-        if (vendor.isEmpty()){
-            throw new NotFoundException("Invalid vendor","Vendor does not exist.");
-        }
-        return vendorMapper.toDto(vendor.get());
+        return vendorMapper.toDto(vendor);
     }
 
     public VendorDto findVendorByName(String name) {

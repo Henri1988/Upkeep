@@ -31,26 +31,24 @@ public class PurchaseOrderService {
     @Resource
     private PurchaseOrderMapper purchaseOrderMapper;
 
-
     public PurchaseOrderDto createPurchaseOrder(PurchaseOrderDto purchaseOrderDto) {
 
         PurchaseOrder purchaseOrder = purchaseOrderMapper.toEntity(purchaseOrderDto);
 
-        Optional<Category> category = categoryRepository.findByCategoryId(purchaseOrderDto.getCategoryId());
-        Optional<Vendor> vendor =vendorRepository.findVendorById(purchaseOrderDto.getVendorId());
-        Optional<Part> part=partRepository.findPartById(purchaseOrderDto.getPartId());
-        purchaseOrder.setCategory(category.get());
-        purchaseOrder.setVendor(vendor.get());
-        purchaseOrder.setPart(part.get());
+        Category category = categoryRepository.findByCategoryId(purchaseOrderDto.getCategoryId());
+        Vendor vendor =vendorRepository.findVendorById(purchaseOrderDto.getVendorId());
+        Part part=partRepository.findPartById(purchaseOrderDto.getPartId());
+        purchaseOrder.setCategory(category);
+        purchaseOrder.setVendor(vendor);
+        purchaseOrder.setPart(part);
 
         purchaseOrderRepository.save(purchaseOrder);
         return purchaseOrderMapper.toDto(purchaseOrder);
     }
 
-
     public PurchaseOrderDto findPurchaseById(Integer id) {
-        Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
-        return purchaseOrderMapper.toDto(purchaseOrder.get());
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
+        return purchaseOrderMapper.toDto(purchaseOrder);
     }
 
     public List<PurchaseOrderDto> findAllPurchases() {
@@ -59,13 +57,13 @@ public class PurchaseOrderService {
     }
 
     public void updatePurchaseOrderById(PurchaseOrderDto purchaseOrderDto, Integer id) {
-        Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
-        purchaseOrderMapper.updatePurchaseOrderFromPurchaseOrderDto(purchaseOrderDto, purchaseOrder.get());
-        purchaseOrderRepository.save(purchaseOrder.get());
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
+        purchaseOrderMapper.updatePurchaseOrderFromPurchaseOrderDto(purchaseOrderDto, purchaseOrder);
+        purchaseOrderRepository.save(purchaseOrder);
     }
 
     public void deletePurchaseOrderById(Integer id) {
-        Optional<PurchaseOrder> purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
-        purchaseOrderRepository.delete(purchaseOrder.get());
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findByPurchaseOrderId(id);
+        purchaseOrderRepository.delete(purchaseOrder);
     }
 }

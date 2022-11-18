@@ -2,9 +2,9 @@ package com.example.myApp.domain.purchaseorder;
 
 import com.example.myApp.domain.category.Category;
 import com.example.myApp.domain.partsandinventory.parts.Part;
+import com.example.myApp.domain.purchaseorder.PurchaseOrderDto.PurchaseOrderDtoBuilder;
 import com.example.myApp.domain.vendor.Vendor;
 import com.example.myApp.domain.vendor.Vendor.VendorBuilder;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-18T01:13:07+0200",
+    date = "2022-11-18T02:15:57+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 @Component
@@ -55,49 +55,29 @@ public class PurchaseOrderMapperImpl implements PurchaseOrderMapper {
             return null;
         }
 
-        Integer vendorId = null;
-        Integer categoryId = null;
-        Integer partId = null;
-        Integer id = null;
-        String title = null;
-        LocalDate dueDate = null;
-        String additionalDetails = null;
-        String requesterCompanyName = null;
-        String requesterAddress = null;
-        String requesterPhoneNumber = null;
-        String shipToName = null;
-        String shippingAddress = null;
-        String shipToCompanyName = null;
-        String shipToPhoneNumber = null;
-        LocalDate purchaseOrderDate = null;
-        String shippingMethod = null;
-        String requisitioner = null;
-        String terms = null;
-        String notes = null;
+        PurchaseOrderDtoBuilder purchaseOrderDto = PurchaseOrderDto.builder();
 
-        vendorId = purchaseOrderVendorId( purchaseOrder );
-        categoryId = purchaseOrderCategoryId( purchaseOrder );
-        partId = purchaseOrderPartId( purchaseOrder );
-        id = purchaseOrder.getId();
-        title = purchaseOrder.getTitle();
-        dueDate = purchaseOrder.getDueDate();
-        additionalDetails = purchaseOrder.getAdditionalDetails();
-        requesterCompanyName = purchaseOrder.getRequesterCompanyName();
-        requesterAddress = purchaseOrder.getRequesterAddress();
-        requesterPhoneNumber = purchaseOrder.getRequesterPhoneNumber();
-        shipToName = purchaseOrder.getShipToName();
-        shippingAddress = purchaseOrder.getShippingAddress();
-        shipToCompanyName = purchaseOrder.getShipToCompanyName();
-        shipToPhoneNumber = purchaseOrder.getShipToPhoneNumber();
-        purchaseOrderDate = purchaseOrder.getPurchaseOrderDate();
-        shippingMethod = purchaseOrder.getShippingMethod();
-        requisitioner = purchaseOrder.getRequisitioner();
-        terms = purchaseOrder.getTerms();
-        notes = purchaseOrder.getNotes();
+        purchaseOrderDto.vendorId( purchaseOrderVendorId( purchaseOrder ) );
+        purchaseOrderDto.categoryId( purchaseOrderCategoryId( purchaseOrder ) );
+        purchaseOrderDto.partId( purchaseOrderPartId( purchaseOrder ) );
+        purchaseOrderDto.id( purchaseOrder.getId() );
+        purchaseOrderDto.title( purchaseOrder.getTitle() );
+        purchaseOrderDto.dueDate( purchaseOrder.getDueDate() );
+        purchaseOrderDto.additionalDetails( purchaseOrder.getAdditionalDetails() );
+        purchaseOrderDto.requesterCompanyName( purchaseOrder.getRequesterCompanyName() );
+        purchaseOrderDto.requesterAddress( purchaseOrder.getRequesterAddress() );
+        purchaseOrderDto.requesterPhoneNumber( purchaseOrder.getRequesterPhoneNumber() );
+        purchaseOrderDto.shipToName( purchaseOrder.getShipToName() );
+        purchaseOrderDto.shippingAddress( purchaseOrder.getShippingAddress() );
+        purchaseOrderDto.shipToCompanyName( purchaseOrder.getShipToCompanyName() );
+        purchaseOrderDto.shipToPhoneNumber( purchaseOrder.getShipToPhoneNumber() );
+        purchaseOrderDto.purchaseOrderDate( purchaseOrder.getPurchaseOrderDate() );
+        purchaseOrderDto.shippingMethod( purchaseOrder.getShippingMethod() );
+        purchaseOrderDto.requisitioner( purchaseOrder.getRequisitioner() );
+        purchaseOrderDto.terms( purchaseOrder.getTerms() );
+        purchaseOrderDto.notes( purchaseOrder.getNotes() );
 
-        PurchaseOrderDto purchaseOrderDto = new PurchaseOrderDto( id, title, dueDate, additionalDetails, vendorId, categoryId, partId, requesterCompanyName, requesterAddress, requesterPhoneNumber, shipToName, shippingAddress, shipToCompanyName, shipToPhoneNumber, purchaseOrderDate, shippingMethod, requisitioner, terms, notes );
-
-        return purchaseOrderDto;
+        return purchaseOrderDto.build();
     }
 
     @Override

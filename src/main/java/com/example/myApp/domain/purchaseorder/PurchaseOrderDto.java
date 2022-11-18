@@ -1,6 +1,7 @@
 package com.example.myApp.domain.purchaseorder;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -9,24 +10,33 @@ import java.time.LocalDate;
  * A DTO for the {@link PurchaseOrder} entity
  */
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PurchaseOrderDto implements Serializable {
-    private final Integer id;
-    private final String title;
-    private final LocalDate dueDate;
-    private final String additionalDetails;
-    private final Integer vendorId;
-    private final Integer categoryId;
-    private final Integer partId;
-    private final String requesterCompanyName;
-    private final String requesterAddress;
-    private final String requesterPhoneNumber;
-    private final String shipToName;
-    private final String shippingAddress;
-    private final String shipToCompanyName;
-    private final String shipToPhoneNumber;
-    private final LocalDate purchaseOrderDate;
-    private final String shippingMethod;
-    private final String requisitioner;
-    private final String terms;
-    private final String notes;
+    private Integer id;
+    private  String title;
+    private  LocalDate dueDate;
+    private  String additionalDetails;
+    private  Integer vendorId;
+    private  Integer categoryId;
+    private  Integer partId;
+    private  String requesterCompanyName;
+    private  String requesterAddress;
+    private  String requesterPhoneNumber;
+    private  String shipToName;
+    private  String shippingAddress;
+    private  String shipToCompanyName;
+    private  String shipToPhoneNumber;
+    private  LocalDate purchaseOrderDate;
+    private  String shippingMethod;
+    private  String requisitioner;
+    private  String terms;
+    private  String notes;
+
+
 }
